@@ -20,4 +20,5 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+// CUSTOM BY FLORENT
 
