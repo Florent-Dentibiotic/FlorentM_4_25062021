@@ -227,6 +227,19 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
+
+.form-help {
+  font-size: .4em;
+  color: #e54858;
+}
+
+.d-none{
+  display: none;
+}
+
+.d-block{
+  display: block;
+}
 /* 
 input[data-error]::after {
     content: attr(data-error);
@@ -234,8 +247,8 @@ input[data-error]::after {
     color: red;
 } */
 
-input:invalid {
-  border: 1px solid red;
+.text-control:valid{
+  border: 2px solid #279e7a;
 }
 
 .checkbox-label,

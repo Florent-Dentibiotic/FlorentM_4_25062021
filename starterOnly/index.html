@@ -71,8 +71,10 @@
                   id="first"
                   name="first"
                   minlength="2"
+                  placeholder="Jean"
                   required
                 /><br>
+                <p class="d-none form-help">Ajoutez un prénom de 2 lettres minimum.</p>
               </div>
               <div
                 class="formData">
@@ -83,8 +85,10 @@
                   id="last"
                   name="last"
                   minlength="2"
+                  placeholder="Dupond"
                   required
                 /><br>
+                <p class="d-none form-help">Ajoutez un nom de 2 lettres minimum.</p>
               </div>
               <div
                 class="formData">
@@ -94,8 +98,10 @@
                   type="email"
                   id="email"
                   name="email"
+                  placeholder="example@gmail.com"
                   required
                 /><br>
+                <p class="d-none form-help">Ajoutez une adresse email valide.</p>
               </div>
               <div
                 class="formData">
@@ -107,17 +113,19 @@
                   name="birthdate"
                   required
                 /><br>
+                <p class="d-none form-help">Ajoutez une date de naissance au format JJ/MM/AAAA.</p>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" placeholder="3" required>
+                <p class="d-none form-help">Saisissez un nombre entre 0 et 99</p>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
                 class="formData">
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input cities"
                   type="radio"
                   id="location1"
                   name="location"
@@ -129,7 +137,7 @@
                   New York</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input cities"
                   type="radio"
                   id="location2"
                   name="location"
@@ -140,7 +148,7 @@
                   San Francisco</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input cities"
                   type="radio"
                   id="location3"
                   name="location"
@@ -151,7 +159,7 @@
                   Seattle</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input cities"
                   type="radio"
                   id="location4"
                   name="location"
@@ -162,7 +170,7 @@
                   Chicago</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input cities"
                   type="radio"
                   id="location5"
                   name="location"
@@ -173,7 +181,7 @@
                   Boston</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input cities"
                   type="radio"
                   id="location6"
                   name="location"
@@ -183,6 +191,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <p class="d-none form-help">Choisir l'une des villes proposées.</p>
               </div>
 
               <div
@@ -199,6 +208,7 @@
                   J'ai lu et j'accepte les conditions d'utilisation.
                 </label>
                 <br>
+                <p class="d-none form-help">Vous devez lire et accepter les conditions d'utilisation.</p>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
