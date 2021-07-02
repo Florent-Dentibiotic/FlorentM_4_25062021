@@ -70,9 +70,7 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
                   placeholder="Jean"
-                  required
                 /><br>
                 <p class="d-none form-help">Ajoutez un prénom de 2 lettres minimum.</p>
               </div>
@@ -84,9 +82,7 @@
                   type="text"
                   id="last"
                   name="last"
-                  minlength="2"
                   placeholder="Dupond"
-                  required
                 /><br>
                 <p class="d-none form-help">Ajoutez un nom de 2 lettres minimum.</p>
               </div>
@@ -99,7 +95,6 @@
                   id="email"
                   name="email"
                   placeholder="example@gmail.com"
-                  required
                 /><br>
                 <p class="d-none form-help">Ajoutez une adresse email valide.</p>
               </div>
@@ -111,14 +106,21 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  required
                 /><br>
                 <p class="d-none form-help">Ajoutez une date de naissance au format JJ/MM/AAAA.</p>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" placeholder="3" required>
+                <input 
+                  type="number" 
+                  class="text-control" 
+                  id="quantity" 
+                  name="quantity" 
+                  min="0" 
+                  max="99" 
+                  placeholder="3"
+                />
                 <p class="d-none form-help">Saisissez un nombre entre 0 et 99</p>
               </div>
               <p class="text-label">Quelles villes ?</p>

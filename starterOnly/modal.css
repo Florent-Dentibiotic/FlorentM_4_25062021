@@ -247,7 +247,7 @@ input[data-error]::after {
     color: red;
 } */
 
-.text-control:valid{
+.valid-field{
   border: 2px solid #279e7a;
 }
 
