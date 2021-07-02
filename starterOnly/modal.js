@@ -19,7 +19,9 @@ let email = document.getElementById('email');
 let birthdate = document.getElementById('birthdate');
 let gamesQuantity = document.getElementById('quantity');
 let location1 = document.querySelectorAll(".cities");
+let locationsFields = Array.from(location1);
 let useConditions = document.getElementById('checkbox1');
+let stayTuned = document.getElementById('checkbox2');
 let form_OK = true;
 const regexFirst = /^[a-zA-Z][a-zA-Z]+$/;
 const regexLast = /^[a-zA-Z][a-zA-Z'-]+$/;
@@ -46,11 +48,11 @@ function closeModal() {
 //Event listerner during field completion :
 firstName.addEventListener('change', testRegexFirst, false);
 lastName.addEventListener('change', testRegexLast, false);
-email.addEventListener('change', testRegexEmail(), false);
-birthdate.addEventListener('change', testRegexBirthdate(), false);
-gamesQuantity.addEventListener('change', testRegexGamesQuantity(), false);
-
-useConditions.addEventListener('change', useConditionTest, false)
+email.addEventListener('change', testRegexEmail, false);
+birthdate.addEventListener('change', testRegexBirthdate, false);
+gamesQuantity.addEventListener('change', testRegexGamesQuantity, false);
+location1.forEach(element => element.addEventListener('change', testLocation, false));
+useConditions.addEventListener('change', useConditionTest, false);
 
 // Regex tests :
 function testRegexFirst () {
@@ -74,12 +76,13 @@ function testRegexLast () {
 };
 
 function testRegexEmail() {
-  if (regexEmail.test(email.value) == true) {
-    email.parentElement.lastElementChild.classList.replace("d-block", "d-none");
-    email.classList.add("valid-field");
-  } else {
+  if (regexEmail.test(email.value) == false) {
     email.parentElement.lastElementChild.classList.replace("d-none", "d-block");
     email.classList.remove("valid-field");
+  } else {
+    email.parentElement.lastElementChild.classList.replace("d-block", "d-none");
+    email.classList.add("valid-field");
+    
   }
 };
 
@@ -96,18 +99,20 @@ function testRegexBirthdate() {
 function testRegexGamesQuantity() {
   if (regexGamesQuantity.test(gamesQuantity.value) == true) {
     gamesQuantity.parentElement.lastElementChild.classList.replace("d-block", "d-none");
+    gamesQuantity.classList.add("valid-field");
   } else {
     gamesQuantity.parentElement.lastElementChild.classList.replace("d-none", "d-block");
+    gamesQuantity.classList.remove("valid-field");
   }
 };
 
-location1.forEach(element => element.addEventListener('change', function(event) {
-  if (event.target.validity.valid) {
+function testLocation() {
+  if (locationsFields.find(e => e.checked === true)) {
     location1[0].parentElement.lastElementChild.classList.replace("d-block", "d-none");
   } else {
-    location1[0].parentElement.lastElementChild.classList.replace("d-none", "d-block");
+    location1[0].parentElement.lastElementChild.classList.replace("d-none", "d-block");    
   }
-}, false));
+};
 
 function useConditionTest() {
   if (useConditions.checked == false){
@@ -117,6 +122,21 @@ function useConditionTest() {
   } 
 };
 
+// class identity :
+
+const Reservation = class {
+  constructor(firstName, lastName, email, birthday, gamesPlayed, city, termsConditions, stayTuned ) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.birthday = birthday;
+    this.gamesPlayed = gamesPlayed;
+    this.city = city;
+    this.termsConditions = termsConditions;
+    this.stayTuned = stayTuned;
+  }
+};
+
 // controle de remplissage des formulaires
 function testFieldsValidity(){
   testRegexFirst ();
@@ -124,14 +144,10 @@ function testFieldsValidity(){
   testRegexEmail();
   testRegexBirthdate();
   testRegexGamesQuantity();
+  testLocation();
+  useConditionTest();
 
-  useConditionTest()
-
-  if (location1[0].validity.valid == false){
-    location1[0].parentElement.lastElementChild.classList.replace("d-none", "d-block");
-  } else {
-    location1[0].parentElement.lastElementChild.classList.replace("d-block", "d-none");
-  } 
+  console.log(firstName.value, lastName.value, email.value, birthdate.value, gamesQuantity.value, useConditions.checked, stayTuned.checked);
 };
 
 sumitInscription.addEventListener("click", testFieldsValidity);
