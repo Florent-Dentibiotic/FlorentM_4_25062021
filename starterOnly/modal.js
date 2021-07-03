@@ -150,7 +150,7 @@ function validate(){
   let actualInscription =  new Reservation(firstName.value, lastName.value, email.value, birthdate.value, 'New-york', gamesQuantity.value, useConditions.checked, stayTuned.checked);
   
   if (regexFirst.test(firstName.value) == true && regexLast.test(lastName.value) == true && regexEmail.test(email.value) == true && regexBirthdate.test(birthdate.value) == true && regexGamesQuantity.test(gamesQuantity.value) == true && locationsFields.find(e => e.checked === true) && useConditions.checked == true){
-    alert("Merci pour votre inscription !");
+    alert("Merci ! Votre réservation a été reçue.");
     return true;
   } else {
     return false;
