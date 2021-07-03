@@ -22,7 +22,6 @@ let location1 = document.querySelectorAll(".cities");
 let locationsFields = Array.from(location1);
 let useConditions = document.getElementById('checkbox1');
 let stayTuned = document.getElementById('checkbox2');
-let form_OK = true;
 const regexFirst = /^[a-zA-Z][a-zA-Z]+$/;
 const regexLast = /^[a-zA-Z][a-zA-Z'-]+$/;
 const regexEmail = /^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]­{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$/;
@@ -74,7 +73,7 @@ function testRegexLast () {
     lastName.classList.add("unvalid-field");
   } else {
     lastName.parentElement.lastElementChild.classList.replace("d-block", "d-none");
-    lastName.classList.remove("unalid-field");
+    lastName.classList.remove("unvalid-field");
     lastName.classList.add("valid-field");
   }
 };
@@ -155,8 +154,6 @@ function validate(){
   testRegexGamesQuantity();
   testLocation();
   useConditionTest();
-
-  let actualInscription =  new Reservation(firstName.value, lastName.value, email.value, birthdate.value, 'New-york', gamesQuantity.value, useConditions.checked, stayTuned.checked);
   
   if (regexFirst.test(firstName.value) == true && regexLast.test(lastName.value) == true && regexEmail.test(email.value) == true && regexBirthdate.test(birthdate.value) == true && regexGamesQuantity.test(gamesQuantity.value) == true && locationsFields.find(e => e.checked === true) && useConditions.checked == true){
     alert("Merci ! Votre réservation a été reçue.");
@@ -165,5 +162,3 @@ function validate(){
     return false;
   }
 };
-
-sumitInscription.addEventListener("click", validate);
