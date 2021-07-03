@@ -131,14 +131,14 @@ const Reservation = class {
     this.email = email;
     this.birthday = birthday;
     this.gamesPlayed = gamesPlayed;
-    this.city = city;
+    //this.city = city;
     this.termsConditions = termsConditions;
     this.stayTuned = stayTuned;
   }
 };
 
 // controle de remplissage des formulaires
-function testFieldsValidity(){
+function validate(){
   testRegexFirst ();
   testRegexLast ();
   testRegexEmail();
@@ -147,7 +147,14 @@ function testFieldsValidity(){
   testLocation();
   useConditionTest();
 
-  console.log(firstName.value, lastName.value, email.value, birthdate.value, gamesQuantity.value, useConditions.checked, stayTuned.checked);
+  let actualInscription =  new Reservation(firstName.value, lastName.value, email.value, birthdate.value, 'New-york', gamesQuantity.value, useConditions.checked, stayTuned.checked);
+  
+  if (regexFirst.test(firstName.value) == true && regexLast.test(lastName.value) == true && regexEmail.test(email.value) == true && regexBirthdate.test(birthdate.value) == true && regexGamesQuantity.test(gamesQuantity.value) == true && locationsFields.find(e => e.checked === true) && useConditions.checked == true){
+    alert("Merci pour votre inscription !");
+    return true;
+  } else {
+    return false;
+  }
 };
 
-sumitInscription.addEventListener("click", testFieldsValidity);
+sumitInscription.addEventListener("click", validate);
