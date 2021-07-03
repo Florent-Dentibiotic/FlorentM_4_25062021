@@ -59,8 +59,10 @@ function testRegexFirst () {
   if (regexFirst.test(firstName.value) == false) {
     firstName.parentElement.lastElementChild.classList.replace("d-none", "d-block");
     firstName.classList.remove("valid-field");
+    firstName.classList.add("unvalid-field");
   } else {
     firstName.parentElement.lastElementChild.classList.replace("d-block", "d-none");
+    firstName.classList.remove("unvalid-field");
     firstName.classList.add("valid-field");
   }
 };
@@ -69,8 +71,10 @@ function testRegexLast () {
   if (regexLast.test(lastName.value) == false) {
     lastName.parentElement.lastElementChild.classList.replace("d-none", "d-block");
     lastName.classList.remove("valid-field");
+    lastName.classList.add("unvalid-field");
   } else {
     lastName.parentElement.lastElementChild.classList.replace("d-block", "d-none");
+    lastName.classList.remove("unalid-field");
     lastName.classList.add("valid-field");
   }
 };
@@ -79,30 +83,35 @@ function testRegexEmail() {
   if (regexEmail.test(email.value) == false) {
     email.parentElement.lastElementChild.classList.replace("d-none", "d-block");
     email.classList.remove("valid-field");
+    email.classList.add("unvalid-field");    
   } else {
     email.parentElement.lastElementChild.classList.replace("d-block", "d-none");
-    email.classList.add("valid-field");
-    
+    email.classList.remove("unvalid-field");
+    email.classList.add("valid-field");   
   }
 };
 
 function testRegexBirthdate() {
   if (regexBirthdate.test(birthdate.value) == true) {
     birthdate.parentElement.lastElementChild.classList.replace("d-block", "d-none");
+    birthdate.classList.remove("unvalid-field");
     birthdate.classList.add("valid-field");
   } else {
     birthdate.parentElement.lastElementChild.classList.replace("d-none", "d-block");
     birthdate.classList.remove("valid-field");
+    birthdate.classList.add("unvalid-field");
   }
 };
 
 function testRegexGamesQuantity() {
   if (regexGamesQuantity.test(gamesQuantity.value) == true) {
     gamesQuantity.parentElement.lastElementChild.classList.replace("d-block", "d-none");
+    gamesQuantity.classList.remove("unvalid-field");
     gamesQuantity.classList.add("valid-field");
   } else {
     gamesQuantity.parentElement.lastElementChild.classList.replace("d-none", "d-block");
     gamesQuantity.classList.remove("valid-field");
+    gamesQuantity.classList.add("unvalid-field");
   }
 };
 

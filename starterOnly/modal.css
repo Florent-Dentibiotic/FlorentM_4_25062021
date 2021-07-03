@@ -250,6 +250,10 @@ input[data-error]::after {
   border: 2px solid #279e7a;
 }
 
+.unvalid-field{
+  border: 2px solid #fe142f;
+}
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
