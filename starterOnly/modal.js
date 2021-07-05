@@ -53,82 +53,42 @@ gamesQuantity.addEventListener('change', testRegexGamesQuantity, false);
 location1.forEach(element => element.addEventListener('change', testLocation, false));
 useConditions.addEventListener('change', useConditionTest, false);
 
+
 // Regex tests :
-function testRegexFirst () {
-  if (regexFirst.test(firstName.value) == false) {
-    firstName.parentElement.lastElementChild.classList.replace("d-none", "d-block");
-    firstName.classList.remove("valid-field");
-    firstName.classList.add("unvalid-field");
+function testRegex(field, regex, check){
+  if (check === 6){
+    if (field.find(e => e.checked === true)) {
+      regex.parentElement.lastElementChild.classList.replace("d-block", "d-none");
+    } else {
+      regex.parentElement.lastElementChild.classList.replace("d-none", "d-block");    
+    }
+  } else if (check === 1){
+    if (field.checked == false){
+      field.nextElementSibling.nextElementSibling.nextElementSibling.classList.replace("d-none", "d-block");
+    } else {
+      field.nextElementSibling.nextElementSibling.nextElementSibling.classList.replace("d-block", "d-none");
+    } 
   } else {
-    firstName.parentElement.lastElementChild.classList.replace("d-block", "d-none");
-    firstName.classList.remove("unvalid-field");
-    firstName.classList.add("valid-field");
+    if (regex.test(field.value) == false) {
+      field.parentElement.lastElementChild.classList.replace("d-none", "d-block");
+      field.classList.remove("valid-field");
+      field.classList.add("unvalid-field");
+    } else {
+      field.parentElement.lastElementChild.classList.replace("d-block", "d-none");
+      field.classList.remove("unvalid-field");
+      field.classList.add("valid-field");
+    }
   }
-};
+}
 
-function testRegexLast () {
-  if (regexLast.test(lastName.value) == false) {
-    lastName.parentElement.lastElementChild.classList.replace("d-none", "d-block");
-    lastName.classList.remove("valid-field");
-    lastName.classList.add("unvalid-field");
-  } else {
-    lastName.parentElement.lastElementChild.classList.replace("d-block", "d-none");
-    lastName.classList.remove("unvalid-field");
-    lastName.classList.add("valid-field");
-  }
-};
 
-function testRegexEmail() {
-  if (regexEmail.test(email.value) == false) {
-    email.parentElement.lastElementChild.classList.replace("d-none", "d-block");
-    email.classList.remove("valid-field");
-    email.classList.add("unvalid-field");    
-  } else {
-    email.parentElement.lastElementChild.classList.replace("d-block", "d-none");
-    email.classList.remove("unvalid-field");
-    email.classList.add("valid-field");   
-  }
-};
-
-function testRegexBirthdate() {
-  if (regexBirthdate.test(birthdate.value) == true) {
-    birthdate.parentElement.lastElementChild.classList.replace("d-block", "d-none");
-    birthdate.classList.remove("unvalid-field");
-    birthdate.classList.add("valid-field");
-  } else {
-    birthdate.parentElement.lastElementChild.classList.replace("d-none", "d-block");
-    birthdate.classList.remove("valid-field");
-    birthdate.classList.add("unvalid-field");
-  }
-};
-
-function testRegexGamesQuantity() {
-  if (regexGamesQuantity.test(gamesQuantity.value) == true) {
-    gamesQuantity.parentElement.lastElementChild.classList.replace("d-block", "d-none");
-    gamesQuantity.classList.remove("unvalid-field");
-    gamesQuantity.classList.add("valid-field");
-  } else {
-    gamesQuantity.parentElement.lastElementChild.classList.replace("d-none", "d-block");
-    gamesQuantity.classList.remove("valid-field");
-    gamesQuantity.classList.add("unvalid-field");
-  }
-};
-
-function testLocation() {
-  if (locationsFields.find(e => e.checked === true)) {
-    location1[0].parentElement.lastElementChild.classList.replace("d-block", "d-none");
-  } else {
-    location1[0].parentElement.lastElementChild.classList.replace("d-none", "d-block");    
-  }
-};
-
-function useConditionTest() {
-  if (useConditions.checked == false){
-    useConditions.nextElementSibling.nextElementSibling.nextElementSibling.classList.replace("d-none", "d-block");
-  } else {
-    useConditions.nextElementSibling.nextElementSibling.nextElementSibling.classList.replace("d-block", "d-none");
-  } 
-};
+function testRegexFirst () {testRegex(firstName, regexFirst)};
+function testRegexLast () {testRegex(lastName, regexLast)};
+function testRegexEmail() {testRegex(email, regexEmail)};
+function testRegexBirthdate() {testRegex(birthdate, regexBirthdate)};
+function testRegexGamesQuantity() {testRegex(gamesQuantity, regexGamesQuantity)};
+function testLocation() {testRegex(locationsFields, location1[0], 6)};
+function useConditionTest() {testRegex(useConditions, null, 1)};
 
 // class identity :
 
