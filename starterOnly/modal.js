@@ -13,15 +13,15 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeMdal = document.querySelector(".close");
 const sumitInscription = document.querySelector(".btn-submit");
-let firstName = document.getElementById('first');
-let lastName = document.getElementById('last');
-let email = document.getElementById('email');
-let birthdate = document.getElementById('birthdate');
-let gamesQuantity = document.getElementById('quantity');
+let firstName = document.getElementById("first");
+let lastName = document.getElementById("last");
+let email = document.getElementById("email");
+let birthdate = document.getElementById("birthdate");
+let gamesQuantity = document.getElementById("quantity");
 let location1 = document.querySelectorAll(".cities");
 let locationsFields = Array.from(location1);
-let useConditions = document.getElementById('checkbox1');
-let stayTuned = document.getElementById('checkbox2');
+let useConditions = document.getElementById("checkbox1");
+let stayTuned = document.getElementById("checkbox2");
 const regexFirst = /^[a-zA-Z][a-zA-Z]+$/;
 const regexLast = /^[a-zA-Z][a-zA-Z'-]+$/;
 const regexEmail = /^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]­{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$/;
@@ -36,7 +36,7 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-//close modal event 
+//close modal event
 closeMdal.addEventListener("click", closeModal);
 
 // close modal form
@@ -45,13 +45,13 @@ function closeModal() {
 }
 
 //Event listerner during field completion :
-firstName.addEventListener('change', testRegexFirst, false);
-lastName.addEventListener('change', testRegexLast, false);
-email.addEventListener('change', testRegexEmail, false);
-birthdate.addEventListener('change', testRegexBirthdate, false);
-gamesQuantity.addEventListener('change', testRegexGamesQuantity, false);
-location1.forEach(element => element.addEventListener('change', testLocation, false));
-useConditions.addEventListener('change', useConditionTest, false);
+firstName.addEventListener("change", testRegexFirst, false);
+lastName.addEventListener("change", testRegexLast, false);
+email.addEventListener("change", testRegexEmail, false);
+birthdate.addEventListener("change", testRegexBirthdate, false);
+gamesQuantity.addEventListener("change", testRegexGamesQuantity, false);
+location1.forEach(element => element.addEventListener("change", testLocation, false));
+useConditions.addEventListener("change", useConditionTest, false);
 
 
 // Regex tests :
@@ -60,14 +60,14 @@ function testRegex(field, regex, check){
     if (field.find(e => e.checked === true)) {
       regex.parentElement.lastElementChild.classList.replace("d-block", "d-none");
     } else {
-      regex.parentElement.lastElementChild.classList.replace("d-none", "d-block");    
+      regex.parentElement.lastElementChild.classList.replace("d-none", "d-block");
     }
   } else if (check === 1){
     if (field.checked == false){
       field.nextElementSibling.nextElementSibling.nextElementSibling.classList.replace("d-none", "d-block");
     } else {
       field.nextElementSibling.nextElementSibling.nextElementSibling.classList.replace("d-block", "d-none");
-    } 
+    }
   } else {
     if (regex.test(field.value) == false) {
       field.parentElement.lastElementChild.classList.replace("d-none", "d-block");
@@ -114,7 +114,6 @@ function validate(){
   testRegexGamesQuantity();
   testLocation();
   useConditionTest();
-  
   if (regexFirst.test(firstName.value) == true && regexLast.test(lastName.value) == true && regexEmail.test(email.value) == true && regexBirthdate.test(birthdate.value) == true && regexGamesQuantity.test(gamesQuantity.value) == true && locationsFields.find(e => e.checked === true) && useConditions.checked == true){
     alert("Merci ! Votre réservation a été reçue.");
     return true;

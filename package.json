@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Florent-Dentibiotic/GameOn-website-FR/issues"
   },
-  "homepage": "https://github.com/Florent-Dentibiotic/GameOn-website-FR#readme"
+  "homepage": "https://github.com/Florent-Dentibiotic/GameOn-website-FR#readme",
+  "rules": {
+    "semi": ["error", "always"],
+    "quotes": ["error", "double"]
+  }
 }
