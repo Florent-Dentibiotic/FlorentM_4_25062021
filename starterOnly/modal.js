@@ -13,6 +13,10 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeMdal = document.querySelector(".close");
 const sumitInscription = document.querySelector(".btn-submit");
+const validation_ok = document.querySelector(".validation");
+const quitModal = document.querySelector(".btn-quit");
+const modalBody = document.querySelector(".modal-body");
+const subscribe = document.getElementById("subscribe");
 let firstName = document.getElementById("first");
 let lastName = document.getElementById("last");
 let email = document.getElementById("email");
@@ -38,10 +42,14 @@ function launchModal() {
 
 //close modal event
 closeMdal.addEventListener("click", closeModal);
+quitModal.addEventListener("click", closeModal);
 
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
+  modalBody.classList.remove("d-none");
+  validation_ok.classList.replace("d-block", "d-none");
+  subscribe.reset();
 }
 
 //Event listerner during field completion :
@@ -115,8 +123,9 @@ function validate(){
   testLocation();
   useConditionTest();
   if (regexFirst.test(firstName.value) == true && regexLast.test(lastName.value) == true && regexEmail.test(email.value) == true && regexBirthdate.test(birthdate.value) == true && regexGamesQuantity.test(gamesQuantity.value) == true && locationsFields.find(e => e.checked === true) && useConditions.checked == true){
-    alert("Merci ! Votre réservation a été reçue.");
-    return true;
+    modalBody.classList.add("d-none");
+    validation_ok.classList.replace("d-none", "d-block");
+    return false;
   } else {
     return false;
   }
