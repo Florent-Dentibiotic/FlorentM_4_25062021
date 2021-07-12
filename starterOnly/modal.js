@@ -31,6 +31,7 @@ const regexLast = /^[a-zA-Z][a-zA-Z'-]+$/;
 const regexEmail = /^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]­{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$/;
 const regexBirthdate = /^(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/;
 const regexGamesQuantity = /^[0-99]$/;
+form_Ok = false;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -89,7 +90,6 @@ function testRegex(field, regex, check){
   }
 }
 
-
 function testRegexFirst () {testRegex(firstName, regexFirst)};
 function testRegexLast () {testRegex(lastName, regexLast)};
 function testRegexEmail() {testRegex(email, regexEmail)};
@@ -98,22 +98,9 @@ function testRegexGamesQuantity() {testRegex(gamesQuantity, regexGamesQuantity)}
 function testLocation() {testRegex(locationsFields, location1[0], 6)};
 function useConditionTest() {testRegex(useConditions, null, 1)};
 
-// class identity :
 
-const Reservation = class {
-  constructor(firstName, lastName, email, birthday, gamesPlayed, city, termsConditions, stayTuned ) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.birthday = birthday;
-    this.gamesPlayed = gamesPlayed;
-    //this.city = city;
-    this.termsConditions = termsConditions;
-    this.stayTuned = stayTuned;
-  }
-};
 
-// controle de remplissage des formulaires
+// form validation :
 function validate(){
   testRegexFirst ();
   testRegexLast ();
@@ -122,7 +109,18 @@ function validate(){
   testRegexGamesQuantity();
   testLocation();
   useConditionTest();
-  if (regexFirst.test(firstName.value) == true && regexLast.test(lastName.value) == true && regexEmail.test(email.value) == true && regexBirthdate.test(birthdate.value) == true && regexGamesQuantity.test(gamesQuantity.value) == true && locationsFields.find(e => e.checked === true) && useConditions.checked == true){
+
+  if (regexFirst.test(firstName.value) == true 
+    && regexLast.test(lastName.value) == true 
+    && regexEmail.test(email.value) == true 
+    && regexBirthdate.test(birthdate.value) == true 
+    && regexGamesQuantity.test(gamesQuantity.value) == true 
+    && locationsFields.find(e => e.checked === true) 
+    && useConditions.checked == true){
+  form_Ok = true;
+  }
+
+  if (form_Ok === true){
     modalBody.classList.add("d-none");
     validation_ok.classList.replace("d-none", "d-block");
     return false;
