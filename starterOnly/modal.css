@@ -429,7 +429,7 @@ input[data-error]::after {
   margin-top: 11px;
 }
 .hero-section {
-  min-height: 93vh;
+  min-height: 700px;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);

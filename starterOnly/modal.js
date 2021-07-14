@@ -17,6 +17,8 @@ const validation_ok = document.querySelector(".validation");
 const quitModal = document.querySelector(".btn-quit");
 const modalBody = document.querySelector(".modal-body");
 const subscribe = document.getElementById("subscribe");
+
+// INPUTS ELEMENTS
 let firstName = document.getElementById("first");
 let lastName = document.getElementById("last");
 let email = document.getElementById("email");
@@ -26,8 +28,11 @@ let location1 = document.querySelectorAll(".cities");
 let locationsFields = Array.from(location1);
 let useConditions = document.getElementById("checkbox1");
 let stayTuned = document.getElementById("checkbox2");
-const regexFirst = /^[a-zA-Z][a-zA-Z]+$/;
-const regexLast = /^[a-zA-Z][a-zA-Z'-]+$/;
+let inputsArray = [firstName, lastName, email, birthdate, gamesQuantity]
+
+// REGEX
+const regexFirst = /^[a-zA-Z]+[a-zA-Z-]?[a-zA-Z]+$/;
+const regexLast = /^[a-zA-Z]+[a-zA-Z'-]?[a-zA-Z]+$/;
 const regexEmail = /^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]­{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$/;
 const regexBirthdate = /^(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/;
 const regexGamesQuantity = /^[0-99]$/;
@@ -51,17 +56,8 @@ function closeModal() {
   modalBody.classList.remove("d-none");
   validation_ok.classList.replace("d-block", "d-none");
   subscribe.reset();
+  document.location.reload();
 }
-
-//Event listerner during field completion :
-firstName.addEventListener("change", testRegexFirst, false);
-lastName.addEventListener("change", testRegexLast, false);
-email.addEventListener("change", testRegexEmail, false);
-birthdate.addEventListener("change", testRegexBirthdate, false);
-gamesQuantity.addEventListener("change", testRegexGamesQuantity, false);
-location1.forEach(element => element.addEventListener("change", testLocation, false));
-useConditions.addEventListener("change", useConditionTest, false);
-
 
 // Regex tests :
 function testRegex(field, regex, check){
@@ -90,6 +86,7 @@ function testRegex(field, regex, check){
   }
 }
 
+// TEST REGEX FUNCTIONS :
 function testRegexFirst () {testRegex(firstName, regexFirst)};
 function testRegexLast () {testRegex(lastName, regexLast)};
 function testRegexEmail() {testRegex(email, regexEmail)};
@@ -98,6 +95,15 @@ function testRegexGamesQuantity() {testRegex(gamesQuantity, regexGamesQuantity)}
 function testLocation() {testRegex(locationsFields, location1[0], 6)};
 function useConditionTest() {testRegex(useConditions, null, 1)};
 
+
+//Event listerner during field completion :
+firstName.addEventListener("change", testRegexFirst, false);
+lastName.addEventListener("change", testRegexLast, false);
+email.addEventListener("change", testRegexEmail, false);
+birthdate.addEventListener("change", testRegexBirthdate, false);
+gamesQuantity.addEventListener("change", testRegexGamesQuantity, false);
+location1.forEach(element => element.addEventListener("change", testLocation, false));
+useConditions.addEventListener("change", useConditionTest, false);
 
 
 // form validation :
