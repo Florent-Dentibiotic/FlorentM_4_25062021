@@ -35,7 +35,7 @@ const regexFirst = /^[a-zA-Z]+[a-zA-Z-]?[a-zA-Z]+$/;
 const regexLast = /^[a-zA-Z]+[a-zA-Z'-]?[a-zA-Z]+$/;
 const regexEmail = /^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]­{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$/;
 const regexBirthdate = /^(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/;
-const regexGamesQuantity = /^[0-99]$/;
+const regexGamesQuantity = /^[0-9][0-9]?$/;
 form_Ok = false;
 
 // launch modal event
